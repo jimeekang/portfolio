@@ -38,13 +38,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../나도코딩 웹크롤링/webscraping_basic" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.HTML" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -59,6 +59,10 @@
       <workItem from="1625202106860" duration="5158000" />
       <workItem from="1625223605321" duration="40000" />
       <workItem from="1625289642482" duration="3581000" />
+      <workItem from="1625293421377" duration="8512000" />
+      <workItem from="1625313740004" duration="311000" />
+      <workItem from="1625315623248" duration="1293000" />
+      <workItem from="1625317416226" duration="1087000" />
     </task>
     <servers />
   </component>

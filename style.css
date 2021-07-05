@@ -1,14 +1,27 @@
-.logo {
-	width : 30px;
-	height : 25px;
+/* Global setting */
+:root {
+  /* color */
+  --color-white: #ffffff;
+  --color-light-white: #eeeeee;
+  --color-dark-white: #bdbdbd;
+  --color-black: #000000;
+
+  /* Font size */
+  --font-large: 48px;
+  --font-medium: 28px;
+  --font-regular: 18px;
+  --font-small: 16px;
+  --font-micro: 14px;
+
+  /* Font weight */
+  --weight-bold: 700;
+  --weight-semi-bold: 600;
+  --weoght-regular: 400;
+
+  /* Size */
 }
 
-.home__profile {
-	width : 500px;
-	height : 300px
-}
-
-.school__logo {
-	width : 105px;
-	height : 50px
+/* Universal tages */
+* {
+  box-sizing: border-box;
 }
