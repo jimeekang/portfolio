@@ -14,7 +14,7 @@
   --font-small: 16px;
   --font-micro: 14px;
 
-  /* Font weight */
+  /* Font weight 글자 굵기 */
   --weight-bold: 700;
   --weight-semi-bold: 600;
   --weoght-regular: 400;
@@ -49,7 +49,7 @@ ul {
 }
 
 button {
-  background-color: transparent;
+  background-color: transparent; /*배경색이랑 같게*/
   cursor: pointer;
   outline: none;
   border: none;
@@ -233,7 +233,7 @@ p {
 
 /* Skill */
 #skills {
-  background-color: var(--color-Purple);
+  background: url("imgs/home-background.png") center/cover no-repeat;
 }
 
 .skills__title,
@@ -318,7 +318,7 @@ p {
   color: var(--color-black);
   width: 24px;
   height: 24px;
-  display: inline-block;
+  display: inline-block; /*span tag이기 때문*/
   line-height: 24px;
   position: relative;
   top: -20px;
@@ -383,4 +383,66 @@ p {
   left: 50%;
   margin-left: -15px;
   margin-top: 8px;
+}
+
+/* Testimonials */
+#testimonials {
+  background: url("imgs/home-background.png") center/cover no-repeat;
+}
+
+.testimonials__title,
+.testimonials__description,
+.speech__bubble,
+.speech__name {
+  color: var(--color-light-white);
+}
+
+.testimonials {
+  margin: 40px;
+}
+.testimonials__comment {
+  display: flex;
+  margin: 32px 0;
+}
+.comment__avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+/* 짝수, 홀수 구분해서 css 주기 */
+.comment__avatar:nth-child(odd) {
+  /*홀수*/
+  margin-right: 40px;
+}
+.comment__avatar:nth-child(even) {
+  /*짝수*/
+  margin-left: 40px;
+}
+
+.comment__speech-bubble {
+  padding: 18px;
+  background-color: #ff79ff;
+  border-radius: var(--size-border-radius);
+}
+
+.comment__speech-bubble u {
+  color: var(--color-black);
+}
+
+/* Contact */
+#contact {
+  background-color: var(--color-Purple);
+}
+
+.contact__title,
+.contact_email,
+.contact__footer {
+  color: var(--color-light-white);
+  margin: 40px 0;
+}
+
+a i {
+  font-size: 50px;
+  padding: 0 12px;
 }
