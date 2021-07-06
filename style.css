@@ -5,6 +5,7 @@
   --color-light-white: #eeeeee;
   --color-dark-white: #bdbdbd;
   --color-black: #000000;
+  --color-Purple: #aa00ff;
 
   /* Font size */
   --font-large: 48px;
@@ -44,32 +45,39 @@ ul {
   padding-left: 0;
 }
 
+button {
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
 /* Typography : text padding */
 h1 {
   font-size: var(--font-large);
   font-weight: var(--weight-bold);
-  color: var(--color-light-white);
+  color: var(--color-black);
   margin: 16px 0;
 }
 
 h2 {
   font-size: var(--font-medium);
   font-weight: var(--weight-semi-bold);
-  color: var(--color-light-white);
+  color: var(--color-black);
   margin: 8px 0;
 }
 
 h3 {
   font-size: var(--font-regular);
   font-weight: var(--weoght-regular);
-  color: var(--color-light-white);
+  color: var(--color-black);
   margin: 8px 0;
 }
 
 p {
   font-size: var(--font-regular);
   font-weight: var(--weoght-regular);
-  color: var(--color-light-white);
+  color: var(--color-black);
   margin: 4px 0;
 }
 
@@ -79,7 +87,7 @@ p {
   justify-content: space-between;
   align-items: center;
   color: var(--color-light-white);
-  background-color: var(--color-black);
+  background-color: var(--color-Purple);
   padding: 16px;
 }
 
@@ -112,4 +120,33 @@ p {
 
 .navbar__menu__item:hover {
   background-color: var(--color-dark-white);
+}
+
+/* Home */
+#home {
+  background: url("imgs/home-background.png") center/cover no-repeat;
+  padding: 40px;
+  text-align: center;
+}
+
+.home__profile {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 2px solid var(--color-light-white);
+}
+
+.home__title,
+.home__description {
+  color: var(--color-light-white);
+}
+
+.home__contact {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-bold);
+  margin: 24px;
+  padding: 8px 12px;
+  border: 2px solid var(--color-light-white);
+  border-radius: var(--size-border-radius);
+  color: var(--color-light-white);
 }
