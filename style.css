@@ -442,7 +442,17 @@ p {
   margin: 40px 0;
 }
 
-a i {
-  font-size: 50px;
-  padding: 0 12px;
+.contact__title {
+  margin: 32px 0;
+}
+
+.contact__link {
+  font-size: var(--font-large);
+  margin: 24px 0;
+  transition: all var(--anmimation-duration) ease-in;
+}
+
+.contact__link i:hover {
+  transform: scale(1.1);
+  color: var(--color-black);
 }
