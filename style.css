@@ -116,13 +116,23 @@ p {
   border-radius: var(--size-border-radius);
 }
 
-.navbar__menu__item.active {
+/* .navbar__menu__item.active {
   border: 1px solid var(--color-light-white);
   border-radius: var(--size-border-radius);
-}
+} */
 
 .navbar__menu__item:hover {
   background-color: var(--color-dark-white);
+}
+
+.navbar__toggle-btn {
+  position: absolute;
+  /*position: absolute : 기존 자리에서 빠져나와 포지션을 함*/
+  top: 24px;
+  right: 32px;
+  font-size: 24px;
+  color: var(--color-light-white);
+  display: none;
 }
 
 /* Home */
@@ -455,4 +465,23 @@ p {
 .contact__link i:hover {
   transform: scale(1.1);
   color: var(--color-black);
+}
+
+/* 반응형 만들기! 768opx 일때!
+For below 768px screen width  : @media 쿼리*/
+@media screen and (max-width: 768px) {
+  .navbar__toggle-btn {
+    display: block;
+  }
+  #navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar__menu {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    /* 너비가 작아서 중간으로 안오기 때문에 100%로 맞춰야함 */
+    display: none;
+  }
 }
