@@ -484,4 +484,21 @@ For below 768px screen width  : @media 쿼리*/
     /* 너비가 작아서 중간으로 안오기 때문에 100%로 맞춰야함 */
     display: none;
   }
+  .about__majors {
+    flex-direction: column;
+  }
+  .major {
+    margin-bottom: 40px;
+  }
+  .skillset {
+    flex-direction: column;
+  }
+  .project {
+    flex-grow: 1;
+    /* 화면에 맞게 메꿔줌 */
+  }
+  .comment__avatar {
+    width: 80px;
+    height: 80px;
+  }
 }
