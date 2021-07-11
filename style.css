@@ -88,19 +88,19 @@ p {
 /* Navbar */
 #navbar {
   position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: transparent;
-  transition: all var(--anmimation-duration) ease-in;
   padding: 16px;
-  width: 100%;
+  transition: all var(--anmimation-duration) ease-in;
 }
 
 #navbar.naver--dark {
   background-color: var(--color-purple-2);
   padding: 0 8px;
-  z-index: 1;
+  z-index: 1; /*제일 위에 고정 되있어야 하므로*/
 }
 
 .logo {
