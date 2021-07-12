@@ -10,8 +10,8 @@ document.addEventListener('scroll', () => {
   }else {
     navbar.classList.remove('naver--dark');
   };
+  navbarMenu.classList.remove('open');
 });
-
 
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
@@ -23,9 +23,17 @@ navbarMenu.addEventListener('click', (event) => {
   if(link == null) {
     return;
   }
+  navbarMenu.classList.remove('open');
   // go to the section when tapping on the navbar menu
   scrollIntoView(link);
 });
+
+// Navbar toggle buttion for small screen
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click', () => {
+  navbarMenu.classList.toggle('open');
+});
+
 
 // Handle click on "Contact Me" buttion on home
 const contactBtn = document.querySelector('.home__contact');
@@ -89,6 +97,9 @@ projectContainer.classList.add('anim-out');
 
   
 });
+
+
+
 
 
 // 함수 만들어서 사용

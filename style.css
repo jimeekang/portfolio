@@ -99,7 +99,7 @@ p {
 
 #navbar.naver--dark {
   background-color: var(--color-purple-2);
-  padding: 0 8px;
+  padding: 10px 8px;
   z-index: 1; /*제일 위에 고정 되있어야 하므로*/
 }
 
@@ -409,7 +409,7 @@ p {
 }
 
 .project__description h3 {
-  color: var(--color-light-white);
+  color: gold;
 }
 
 .project__description h3:after {
@@ -417,9 +417,9 @@ p {
   display: block;
   position: relative;
   left: 50%;
-  width: 25px;
+  width: 50px;
   height: 2px;
-  margin-left: -12px;
+  transform: translateX(-50%);
   margin-top: 8px;
   background-color: var(--color-dark-white);
 }
@@ -525,7 +525,13 @@ For below 768px screen width  : @media 쿼리*/
   #navbar {
     flex-direction: column;
     align-items: flex-start;
+    background-color: var(--color-purple-2);
   }
+
+  #navbar.navbar--dark {
+    padding: 16px;
+  }
+
   .navbar__menu {
     flex-direction: column;
     text-align: center;
@@ -533,6 +539,11 @@ For below 768px screen width  : @media 쿼리*/
     /* 너비가 작아서 중간으로 안오기 때문에 100%로 맞춰야함 */
     display: none;
   }
+
+  .navbar__menu.open {
+    display: block;
+  }
+
   .about__majors {
     flex-direction: column;
   }
