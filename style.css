@@ -330,13 +330,13 @@ p {
   padding: 8px 50px;
 }
 
-.categories__btn .active,
+.categories__btn.active,
 .categories__btn:hover {
   background-color: var(--color-Purple);
   color: var(--color-light-white);
 }
 
-.categories__btn .active .category__count,
+.categories__btn.active .category__count,
 .categories__btn:hover .category__count {
   opacity: 1;
   top: 0;
@@ -372,6 +372,10 @@ p {
   margin: 2px;
   background-color: var(--color-light-white);
   position: relative;
+}
+
+.project.invisible {
+  display: none;
 }
 
 .project__img {

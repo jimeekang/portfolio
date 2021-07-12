@@ -59,8 +59,26 @@ arrowUP.addEventListener('click', () => {
 });
 
 
-
-
+// Prohects
+const workBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+workBtnContainer.addEventListener('click', (e) => {
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  if(filter == null) {
+    return;
+  }
+  console.log(filter);
+  projects.forEach((project) => {
+    console.log(project.dataset.type)
+    if(filter === '*' || filter === project.dataset.type) {
+      project.classList.remove('invisible'); 
+    }else {
+      project.classList.add('invisible')
+    }
+  });
+  
+});
 
 
 // 함수 만들어서 사용
