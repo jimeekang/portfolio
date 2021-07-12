@@ -33,7 +33,7 @@ contactBtn.addEventListener('click', () => {
   scrollIntoView('#contact');
 });
 
- 
+
 // Make home slowly fade to transparent as the window scrolls down
 const home = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
@@ -59,7 +59,7 @@ arrowUP.addEventListener('click', () => {
 });
 
 
-// Prohects
+// Projects
 const workBtnContainer = document.querySelector('.work__categories');
 const projectContainer = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project');
@@ -68,7 +68,14 @@ workBtnContainer.addEventListener('click', (e) => {
   if(filter == null) {
     return;
   }
-  projectContainer.classList.add('anim-out');
+
+  //Remove selection from the previous item and select the new one
+const active = document.querySelector('.categories__btn.selected')
+active.classList.remove('selected');
+const target = e.target.nodeName == 'BUTTON' ? e.target : e.target.parentNode;
+target.classList.add('selected')
+
+projectContainer.classList.add('anim-out');
   setTimeout(() => {
     projects.forEach((project) => {
       if(filter === '*' || filter === project.dataset.type) {
