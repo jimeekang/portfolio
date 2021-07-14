@@ -36,7 +36,6 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
   font-family: "Roboto", sans-serif;
-  cursor: default; /*커서 올릴때 그냥 마우스 커서로 설정*/
 }
 
 a {
@@ -54,6 +53,7 @@ button {
   cursor: pointer;
   outline: none;
   border: none;
+  padding: 0;
 }
 
 /* Typography : text padding */
@@ -95,12 +95,12 @@ p {
   background-color: transparent;
   padding: 16px;
   transition: all var(--anmimation-duration) ease-in;
+  z-index: 1; /*제일 위에 고정 되있어야 하므로*/
 }
 
 #navbar.naver--dark {
   background-color: var(--color-purple-2);
   padding: 10px 8px;
-  z-index: 1; /*제일 위에 고정 되있어야 하므로*/
 }
 
 .logo {
@@ -174,6 +174,10 @@ p {
   color: var(--color-light-white);
 }
 
+.home__contact:hover {
+  background-color: var(--color-Purple);
+}
+
 /* section common */
 .section {
   padding: 50px;
@@ -190,7 +194,6 @@ p {
 .about__majors {
   display: flex;
   margin: 80px 0;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -211,11 +214,11 @@ p {
   color: var(--color-black);
 }
 
-/* icon 애니메이션 넣기 */
 .major__description {
   font-size: var(--font-small);
 }
 
+/* icon 애니메이션 넣기 */
 .major__icon i {
   transition: all var(--anmimation-duration) ease;
 }
@@ -236,7 +239,7 @@ p {
 }
 
 .school__description {
-  margin: 10px 16px;
+  margin: 0 16px;
   text-align: left;
 }
 
@@ -278,7 +281,7 @@ p {
   padding: 20px 40px;
 }
 .skillset__left__skill {
-  margin-bottom: 25px;
+  margin-bottom: 32px;
 }
 
 .skillset__left__skill__description {
@@ -324,7 +327,8 @@ p {
   border: 1px solid var(--color-dark-white);
   border-radius: var(--size-border-radius);
   font-size: var(--font-regular);
-  padding: 8px 50px;
+  padding: 8px 48px;
+  position: relative;
 }
 
 .categories__btn.selected,
@@ -339,7 +343,6 @@ p {
   top: 0;
 }
 .category__count {
-  border: 1px solid pink;
   background-color: pink;
   border-radius: 50%;
   color: var(--color-black);
@@ -347,9 +350,9 @@ p {
   height: 24px;
   display: inline-block; /*span tag이기 때문*/
   line-height: 24px;
-  position: relative;
+  position: absolute;
   top: -20px;
-  left: 4px;
+  right: 16px;
   opacity: 0;
   transition: all var(--anmimation-duration) ease-in;
 }
@@ -363,7 +366,7 @@ p {
 }
 
 .work__projects.anim-out {
-  opacity: 0.6;
+  opacity: 0;
   transform: scale(0.96) translateY(40px);
 }
 
@@ -478,7 +481,6 @@ p {
 .contact_email,
 .contact__footer {
   color: var(--color-light-white);
-  margin: 40px 0;
 }
 
 .contact__title {
@@ -504,11 +506,12 @@ p {
   width: 70px;
   height: 70px;
   font-size: 50px;
+  color: var(--color-white);
   background-color: var(--color-purple-2);
-  color: var(--color-light-white);
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 300ms ease-in;
 }
 
 .arrow-up.visible {
@@ -519,7 +522,19 @@ p {
 /* 반응형 만들기! 768opx 일때!
 For below 768px screen width  : @media 쿼리*/
 @media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+
   .navbar__toggle-btn {
+    top: 24px;
+    right: 16px;
+    font-size: var(--font-medium);
     display: block;
   }
   #navbar {
@@ -544,21 +559,59 @@ For below 768px screen width  : @media 쿼리*/
     display: block;
   }
 
+  .section {
+    padding: 16px;
+    padding-top: 40px;
+  }
+
   .about__majors {
     flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 0px;
   }
   .major {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
   .skillset {
     flex-direction: column;
   }
+
+  .categories__btn {
+    margin: 4px 0;
+    width: 100%;
+  }
+
   .project {
     flex-grow: 1;
     /* 화면에 맞게 메꿔줌 */
   }
+
+  .testimonials__comment {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .comment__avatar {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .comment__avatar:nth-child(even),
+  .comment__avatar:nth-child(odd) {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .comment__speech-bubble {
+    order: 1;
+  }
+
+  .arrow-up {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    right: 16px;
+    bottom: 16px;
   }
 }
