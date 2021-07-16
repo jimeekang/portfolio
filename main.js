@@ -45,11 +45,21 @@ contactBtn.addEventListener('click', () => {
 // Make home slowly fade to transparent as the window scrolls down
 const home = document.querySelector('.home__container');
 const homeHeight = home.getBoundingClientRect().height;
+const ContactMeBtn = document.querySelector('.home__contact');
 
 document.addEventListener('scroll', () => {
   home.style.opacity = 1 - window.scrollY / homeHeight;
+  ContactMeBtn.style.opacity = 1 - window.scrollY / homeHeight;
 });
 
+// contact me button => recover opacity
+ContactMeBtn.addEventListener('mouseenter', (e) => {
+  ContactMeBtn.style.opacity = 1;
+});
+// contact me button => remove opacity
+ContactMeBtn.addEventListener('mouseleave', (e) => {
+  ContactMeBtn.style.opacity = 1 - window.scrollY / homeHeight;
+});
 
 // Show "arrow up" button when scrolling down
 const arrowUP = document.querySelector('.arrow-up')
