@@ -53,11 +53,11 @@ document.addEventListener('scroll', () => {
 });
 
 // contact me button => recover opacity
-ContactMeBtn.addEventListener('mouseenter', (e) => {
+ContactMeBtn.addEventListener('mouseenter', () => {
   ContactMeBtn.style.opacity = 1;
 });
 // contact me button => remove opacity
-ContactMeBtn.addEventListener('mouseleave', (e) => {
+ContactMeBtn.addEventListener('mouseleave', () => {
   ContactMeBtn.style.opacity = 1 - window.scrollY / homeHeight;
 });
 
@@ -70,6 +70,18 @@ document.addEventListener('scroll', () => {
     arrowUP.classList.remove('visible');
   }
 });
+
+
+// skill value animi
+const SkillVlueList = document.querySelectorAll('.skill__value');
+document.addEventListener('scroll', () => {
+  for(let Skillvalue of SkillVlueList) {
+    if(window.innerHeight > Skillvalue.getBoundingClientRect().top) {
+      Skillvalue.classList.add('show')
+      }
+    }
+});
+
 
 // Handle click on the "arrow up" button
 arrowUP.addEventListener('click', () => {
