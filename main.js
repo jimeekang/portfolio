@@ -35,6 +35,31 @@ navbarToggleBtn.addEventListener('click', () => {
 });
 
 
+// Home title typing action
+const typingCursor = document.querySelector('.home__title');
+
+function blink() {  // Cursor blinking
+  typingCursor.classList.toggle('active');
+}
+setInterval(blink, 500); // 반복
+
+//  한글자씩 출력
+const Hometitletext = "Hello, I'm Jimee"
+const StringArr = Hometitletext.split('') // string => 단어로 하나하나로 배열
+
+function typing(array) {
+  if(array.length > 0) {
+    typingCursor.textContent += array.shift();
+    setTimeout(function(){
+      typing(array);
+    },80);
+  
+  }
+}
+typing(StringArr);
+
+
+
 // Handle click on "Contact Me" buttion on home
 const contactBtn = document.querySelector('.home__contact');
 contactBtn.addEventListener('click', () => {
@@ -53,7 +78,7 @@ document.addEventListener('scroll', () => {
 });
 
 // contact me button => recover opacity
-ContactMeBtn.addEventListener('mouseenter', () => {
+ContactMeBtn.addEventListener('mouseover', () => {
   ContactMeBtn.style.opacity = 1;
 });
 // contact me button => remove opacity
@@ -72,7 +97,7 @@ document.addEventListener('scroll', () => {
 });
 
 
-// skill value animi
+// skill value animation
 const SkillVlueList = document.querySelectorAll('.skill__value');
 document.addEventListener('scroll', () => {
   for(let Skillvalue of SkillVlueList) {
@@ -91,7 +116,6 @@ arrowUP.addEventListener('click', () => {
 
 // Projects
 const workBtnContainer = document.querySelector('.work__categories');
-const projectContainer = document.querySelector('.work__projects');
 const projects = document.querySelectorAll('.project');
 workBtnContainer.addEventListener('click', (e) => {
   const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
@@ -100,10 +124,11 @@ workBtnContainer.addEventListener('click', (e) => {
   }
 
   //Remove selection from the previous item and select the new one
-const active = document.querySelector('.categories__btn.selected')
+const projectContainer = document.querySelector('.work__projects');
+const active = document.querySelector('.categories__btn.selected');
 active.classList.remove('selected');
 const target = e.target.nodeName == 'BUTTON' ? e.target : e.target.parentNode;
-target.classList.add('selected')
+target.classList.add('selected');
 
 projectContainer.classList.add('anim-out');
   setTimeout(() => {
@@ -116,8 +141,6 @@ projectContainer.classList.add('anim-out');
     });
     projectContainer.classList.remove('anim-out');
   },300);
-
-  
 });
 
 

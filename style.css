@@ -164,6 +164,21 @@ p {
   color: var(--color-light-white);
 }
 
+/* typing action */
+
+.home__title::after {
+  content: "|";
+  display: inline-block;
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  color: var(--color-light-white);
+}
+
+.home__title.active::after {
+  display: none;
+}
+
 .home__contact {
   font-size: var(--font-regular);
   font-weight: var(--weight-bold);
@@ -266,6 +281,10 @@ p {
   color: var(--color-light-white);
 }
 
+.skills__description {
+  margin: 20px 0 40px 0;
+}
+
 .skillset {
   display: flex;
   background-color: #e040fb;
@@ -275,8 +294,9 @@ p {
 .skillset__title {
   color: var(--color-light-white);
 }
+
 .skillset__left {
-  flex-basis: 60%;
+  flex-basis: 60%; /*item 별로 flex-baciss 지정해 줘야함*/
   background-color: #aa00c7;
   padding: 20px 40px;
 }
@@ -302,6 +322,7 @@ p {
   transform: translate(-30px 0);
   opacity: 0;
 }
+
 .skill__value.show {
   transform: none;
   opacity: 1;
@@ -309,6 +330,7 @@ p {
 }
 
 .skillset__right {
+  /*item 별로 flex-baciss 지정해 줘야함*/
   flex-basis: 40%;
 }
 
@@ -611,11 +633,12 @@ For below 768px screen width  : @media 쿼리*/
   .comment__avatar:nth-child(even),
   .comment__avatar:nth-child(odd) {
     margin: 0;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .comment__speech-bubble {
     order: 1;
+    /* comment__speech-bubble 순서가 아래로 가도록*/
   }
 
   .arrow-up {
