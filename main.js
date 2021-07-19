@@ -10,53 +10,82 @@ document.addEventListener('scroll', () => {
   }else {
     navbar.classList.remove('naver--dark');
   };
+
   navbarMenu.classList.remove('open');
 });
 
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event) => {
-  console.log(event.target);
   const target = event.target;
   const link = target.dataset.link;
   // navbar data-link 부분 외에 다른곳을 클릭해도 아무것도 출력되지 않음 
   if(link == null) {
     return;
   }
-  navbarMenu.classList.remove('open');
+
   // go to the section when tapping on the navbar menu
+  navbarMenu.classList.remove('open');
+  
   scrollIntoView(link);
 });
 
 // Navbar toggle buttion for small screen
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
 navbarToggleBtn.addEventListener('click', () => {
-  navbarMenu.classList.toggle('open');
+  navbarMenu.classList.add('open');
 });
 
 
-// Home title typing action
-const typingCursor = document.querySelector('.home__title');
+// Home description word typing action
+const typingArea = document.querySelector('.home_words');
 
 function blink() {  // Cursor blinking
-  typingCursor.classList.toggle('active');
+  typingArea.classList.toggle('active');
 }
 setInterval(blink, 500); // 반복
 
-//  한글자씩 출력
-const Hometitletext = "Hello, I'm Jimee"
-const StringArr = Hometitletext.split('') // string => 단어로 하나하나로 배열
 
-function typing(array) {
-  if(array.length > 0) {
-    typingCursor.textContent += array.shift();
-    setTimeout(function(){
-      typing(array);
-    },80);
-  
-  }
-}
-typing(StringArr);
+// home description word change
+const words = ["Front-end", "Back-end", "Mobile"];
+let i = 0;
+
+function typingEffect() {
+  let word = words[i].split("");
+  function loopTyping() {
+      if (word.length > 0) {
+          document.querySelector('.home_words').textContent += word.shift();
+      } else {
+          deletingEffect(); // 지워야하므로
+          return false;
+      };
+      setTimeout(loopTyping, 400);
+  };
+  loopTyping();
+};
+
+function deletingEffect() {
+  let word = words[i].split("");
+  function loopDeleting() {
+      if (word.length > 0) {
+          word.pop();
+          // pop()으로 빠지고 남은 array를 string 으로 만듦
+          document.querySelector('.home_words').textContent = word.join(""); 
+        } else {
+          if (words.length > (i + 1)) { // i번째 + 1
+              i++;
+          } else {
+              i = 0;
+          };
+          typingEffect();
+          return false;
+      };
+      setTimeout(loopDeleting, 150);
+  };
+  loopDeleting();
+};
+
+typingEffect();
 
 
 

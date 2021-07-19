@@ -166,7 +166,7 @@ p {
 
 /* typing action */
 
-.home__title::after {
+.home_words::after {
   content: "|";
   display: inline-block;
   position: absolute;
@@ -175,7 +175,7 @@ p {
   color: var(--color-light-white);
 }
 
-.home__title.active::after {
+.home_words.active::after {
   display: none;
 }
 
