@@ -14,6 +14,8 @@ document.addEventListener('scroll', () => {
   navbarMenu.classList.remove('open');
 });
 
+
+
 // Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event) => {
@@ -30,11 +32,14 @@ navbarMenu.addEventListener('click', (event) => {
   scrollIntoView(link);
 });
 
+
+
 // Navbar toggle buttion for small screen
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
 navbarToggleBtn.addEventListener('click', () => {
   navbarMenu.classList.add('open');
 });
+
 
 
 // Home description word typing action
@@ -50,29 +55,31 @@ setInterval(blink, 500); // 반복
 const words = ["Front-end", "Back-end", "Mobile"];
 let i = 0;
 
+// typing effect
 function typingEffect() {
-  let word = words[i].split("");
+  let word = words[i].split(""); 
   function loopTyping() {
       if (word.length > 0) {
-          document.querySelector('.home_words').textContent += word.shift();
+          document.querySelector('.home_words').textContent += word.shift(); // string으로 반환
       } else {
           deletingEffect(); // 지워야하므로
           return false;
       };
-      setTimeout(loopTyping, 400);
+    setTimeout(loopTyping, 300);
   };
   loopTyping();
 };
 
+// deleting effect
 function deletingEffect() {
-  let word = words[i].split("");
+  let word = words[i].split(""); 
   function loopDeleting() {
       if (word.length > 0) {
           word.pop();
           // pop()으로 빠지고 남은 array를 string 으로 만듦
           document.querySelector('.home_words').textContent = word.join(""); 
         } else {
-          if (words.length > (i + 1)) { // i번째 + 1
+          if (words.length > (i + 1)) { //배열의 길이 > (i + 1) : 단어 루프
               i++;
           } else {
               i = 0;
@@ -80,12 +87,13 @@ function deletingEffect() {
           typingEffect();
           return false;
       };
-      setTimeout(loopDeleting, 150);
+    setTimeout(loopDeleting, 150);
   };
   loopDeleting();
 };
 
 typingEffect();
+
 
 
 
@@ -146,8 +154,8 @@ arrowUP.addEventListener('click', () => {
 // Projects
 const workBtnContainer = document.querySelector('.work__categories');
 const projects = document.querySelectorAll('.project');
-workBtnContainer.addEventListener('click', (e) => {
-  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+workBtnContainer.addEventListener('click', (event) => {
+  const filter = event.target.dataset.filter || event.target.parentNode.dataset.filter;
   if(filter == null) {
     return;
   }
@@ -156,7 +164,7 @@ workBtnContainer.addEventListener('click', (e) => {
 const projectContainer = document.querySelector('.work__projects');
 const active = document.querySelector('.categories__btn.selected');
 active.classList.remove('selected');
-const target = e.target.nodeName == 'BUTTON' ? e.target : e.target.parentNode;
+const target = event.target.nodeName == 'BUTTON' ? event.target : event.target.parentNode;
 target.classList.add('selected');
 
 projectContainer.classList.add('anim-out');
@@ -173,12 +181,63 @@ projectContainer.classList.add('anim-out');
 });
 
 
-
-
-
 // 함수 만들어서 사용
 function scrollIntoView(selector) {
   const scrollToContact = document.querySelector(selector);
   scrollToContact.scrollIntoView({behavior: "smooth"});
 }
+
+
+
+// 1. 모든 섹션들과 모든 아이템 요소들를 가져온다
+// 2. Intersectionobsever을 이용하여 모든 섹션들을 관잘한다
+// 3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다
+
+// 1. 모든 섹션 요소들과 메뉴아이템들을 가지고 온다
+// 2. IntersectionObserver를 이용해서 모든 섹션들을 관찰한다
+// 3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다
+const sectionIds = [
+  '#home',
+  '#about',
+  '#skills',
+  '#work',
+  '#testimonials',
+  '#contact',
+];
+const sections = sectionIds.map(id => document.querySelector(id));
+const navItems = sectionIds.map(id =>
+  document.querySelector(`[data-link="${id}"]`)
+);
+
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0];
+function selectNavItem(selected) {
+  selectedNavItem.classList.remove('active');
+  selectedNavItem = selected;
+  selectedNavItem.classList.add('active');
+}
+
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3,
+};
+
+const observerCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+      const index = sectionIds.indexOf(`#${entry.target.id}`);
+      // 스크롤링이 아래로 되어서 페이지가 올라옴
+      if (entry.boundingClientRect.y < 0) {
+        selectedNavIndex = index + 1;
+      } else {
+        selectedNavIndex = index - 1;
+      }
+    }
+  });
+};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => observer.observe(section));
+
 
