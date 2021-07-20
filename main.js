@@ -181,20 +181,8 @@ projectContainer.classList.add('anim-out');
 });
 
 
-// 함수 만들어서 사용
-function scrollIntoView(selector) {
-  const scrollToContact = document.querySelector(selector);
-  scrollToContact.scrollIntoView({behavior: "smooth"});
-}
-
-
-
 // 1. 모든 섹션들과 모든 아이템 요소들를 가져온다
 // 2. Intersectionobsever을 이용하여 모든 섹션들을 관잘한다
-// 3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다
-
-// 1. 모든 섹션 요소들과 메뉴아이템들을 가지고 온다
-// 2. IntersectionObserver를 이용해서 모든 섹션들을 관찰한다
 // 3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다
 const sectionIds = [
   '#home',
@@ -216,6 +204,14 @@ function selectNavItem(selected) {
   selectedNavItem = selected;
   selectedNavItem.classList.add('active');
 }
+
+// 함수 만들어서 사용
+function scrollIntoView(selector) {
+  const scrollToContact = document.querySelector(selector);
+  scrollToContact.scrollIntoView({behavior: "smooth"});
+  selectNavItem(navItems[sectionIds.indexOf(selector)]);
+}
+
 
 const observerOptions = {
   root: null,
@@ -240,4 +236,12 @@ const observerCallback = (entries, observer) => {
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 sections.forEach(section => observer.observe(section));
 
+window.addEventListener('wheel', () => {  // wheel: 사용자가 스스로 스크롤할때  / scroll: 브라우저에서 자동적으로 스크롤
+  if(window.scrollY === 0) {
+    selectedNavIndex = 0;
+  }else if ( Math.round(window.scrollY + window.innerHeight) >= document.body.clientHeight){
+    selectedNavIndex = navItems.length - 1;
+  }
+  selectNavItem(navItems[selectedNavIndex]);
+});
 
