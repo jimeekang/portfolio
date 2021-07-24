@@ -82,7 +82,7 @@ function deletingEffect() {
           if (words.length > (i + 1)) { //배열의 길이 > (i + 1) : 단어 루프
               i++;
           } else {
-              i = 0;
+              i = 0; // 첫번째 단어로 돌아감
           };
           typingEffect();
           return false;
